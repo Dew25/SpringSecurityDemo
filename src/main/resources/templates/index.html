@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link th:replace="~{page-templates :: bootstrap}">
+    <link rel="stylesheet" th:href="@{css/index.css}">
+    <title>Title</title>
+</head>
+<body>
+    <div th:replace="~{page-templates :: header}"></div>
+    <main>
+        <p th:text="${text}"></p>
+    </main>
+    <div th:replace="~{page-templates :: footer}"></div>
+</body>
+</html>
