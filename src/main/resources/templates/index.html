@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <link th:replace="~{page-templates :: bootstrap}">
@@ -10,6 +11,19 @@
     <div th:replace="~{page-templates :: header}"></div>
     <main>
         <p th:text="${text}"></p>
+        <p th:text="${username}"></p>
+        <p th:text="${roles}"></p>
+        <p th:text="${password}"></p>
+<!--        <div th:if="${#authorization.expression('isAuthenticated()')}">-->
+<!--            <p th:text="'Logged in as: ' + ${#authentication.principal.username}"></p>-->
+<!--            <p>Attributes:</p>-->
+<!--            <ul>-->
+<!--                <li th:each="attribute : ${#authentication.principal.attributes}" th:text="${attribute.key + ': ' + attribute.value}"></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--        <div th:if="${#authorization.expression('!isAuthenticated()')}">-->
+<!--            <p>Not logged in</p>-->
+<!--        </div>-->
     </main>
     <div th:replace="~{page-templates :: footer}"></div>
 </body>
