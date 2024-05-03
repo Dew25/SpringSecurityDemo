@@ -2,6 +2,7 @@ package ee.ivkhkdev.SpringSecurityDemo.contollers;
 
 import ee.ivkhkdev.SpringSecurityDemo.entity.MyUser;
 import ee.ivkhkdev.SpringSecurityDemo.repository.MyUserRepository;
+import ee.ivkhkdev.SpringSecurityDemo.service.MyUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -16,28 +17,28 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-
 public class UserController {
+
     @Autowired
-    private MyUserRepository myUserRepository;
+    private MyUserService myUserService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @GetMapping("/registration")
     public String showRegistrationForm(Model model){
-        model.addAttribute("info","Hello User SKTV22");
+        model.addAttribute("info","Hello User JKTV22");
         return "registration";
     }
 
     @PostMapping("/registration")
     public String addNewUser(
             Model model,
-            @RequestParam String username,
+            @RequestParam(name = "username") String username,
             @RequestParam String password){
         MyUser myUser = new MyUser();
         myUser.setUsername(username);
         myUser.setPassword(passwordEncoder.encode(password));
         myUser.getRoles().add("USER");
-        myUserRepository.save(myUser);
+        myUserService.save(myUser);
         model.addAttribute("info","Добавлен пользователь "+myUser.getUsername());
         return "redirect:/";
     }

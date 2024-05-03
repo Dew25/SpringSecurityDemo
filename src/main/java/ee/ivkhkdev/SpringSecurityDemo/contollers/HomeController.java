@@ -31,7 +31,7 @@ public class HomeController {
         model.addAttribute("info", "Hello JKTV22");
         return "index";
     }
-    @GetMapping("user")
+    @GetMapping("/user")
     public String user(Model model,Authentication authentication){
         model.addAttribute("info","Hello User JKTV22");
         System.out.println((UserDetails)authentication.getPrincipal());
